@@ -4,7 +4,7 @@
 
 GIE Mapping for nuScenes
 
-FIrst, generate nuScenes ROS bag files (follow nuscenes2bag git@github.com:ZiliangMiao/nuscenes2bag.git )
+FIrst, generate nuScenes ROS bag files (follow nuscenes2bag [git@github.com:ZiliangMiao/nuscenes2bag.git ](https://github.com/ZiliangMiao/nuscenes2bag.git))
 
 
 Source code for the paper: **GPU-accelerated Incremental Euclidean Distance Transform for Online Motion Planning of Mobile Robots**
