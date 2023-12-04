@@ -1,7 +1,5 @@
 # GIE-mapping for nuScenes
 
-GIE Mapping for nuScenes
-
 Firstly, generate nuScenes ROS bag files (follow [nuscenes2bag](https://github.com/ZiliangMiao/nuscenes2bag.git)).
 
 Secondly, follow the guidance of the original readme file to compile the project, which is mentioned bellow.
