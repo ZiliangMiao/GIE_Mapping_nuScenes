@@ -4,7 +4,7 @@ Firstly, generate nuScenes ROS bag files (follow [nuscenes2bag](https://github.c
 
 Secondly, follow the guidance of the original readme file to compile the project, which is mentioned bellow.
 
-Thirdly, modify the parameters in [nusc_dataset.taml](https://github.com/ZiliangMiao/GIE_Mapping_nuScenes/blob/main/cfg/nusc_dataset.yaml).
+Thirdly, modify the parameters in [nusc_dataset.yaml](https://github.com/ZiliangMiao/GIE_Mapping_nuScenes/blob/main/cfg/nusc_dataset.yaml).
 
 Finally, launch: 
 ````bash
