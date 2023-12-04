@@ -19,7 +19,7 @@ cloud_topic: "lidar_top"
 odom_topic: "/odom"
 
 # profile the rms every time the visualization msg is published
-save_esdf_dir: "/home/mars/MOS_Projects/nuScenes_MOS_Labeling/mini_data/esdf"
+save_esdf_dir: "/home/mars/MOS_Projects/nuScenes_MOS_Labeling/mini_data/esdf/0061"
 log_name: "nusc-61.csv"
 
 occupancy_threshold: 180
