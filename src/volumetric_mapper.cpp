@@ -165,7 +165,7 @@ VOLMAPNODE::VOLMAPNODE()
     _odom_ptr = boost::shared_ptr<nav_msgs::Odometry>(new nav_msgs::Odometry());
     _depth_ptr = boost::shared_ptr<sensor_msgs::Image>(new sensor_msgs::Image());
     _pntcld_ptr = boost::shared_ptr<sensor_msgs::PointCloud2>(new sensor_msgs::PointCloud2());
-    _time = 0;
+    _time = 0;  // actually no use
     int3 local_grids = make_int3(param.local_size_x/param.voxel_width, param.local_size_y/param.voxel_width, param.local_size_z/param.voxel_width);
     // setup local map
     _loc_map = new LocMap(param.voxel_width, local_grids, param.occupancy_threshold, param.ogm_min_h, param.ogm_max_h,
@@ -229,7 +229,6 @@ VOLMAPNODE::VOLMAPNODE()
     fprintf(fp,"Ray Casting Time\n");
     for (rosbag::MessageInstance const m: view) {
         msg_idx ++;
-        _time++;
         std::cout << " -- [Test] Read bag message: " << msg_idx << "/" << bag_size << ", " << m.getTopic().c_str() << std::endl;
         // get ros bag msgs
         if (m.getTopic() == odom_topic) {
@@ -247,7 +246,6 @@ VOLMAPNODE::VOLMAPNODE()
         ///////////////////////////////////////////////////////////////////////
         // update ogm and batch edt (original UpdateMap)
         if (cloud_msg != nullptr && odom_msg != nullptr && odom_time == cloud_time) {
-            scan_idx++;
             std::cout << " -- [Test] Scan index: " << scan_idx << " Scan time: " << odom_time << "/" << cloud_time << std::endl;
             
             // register the point cloud and odometry
@@ -305,6 +303,7 @@ VOLMAPNODE::VOLMAPNODE()
             {   
                 printf("Current Scan Index: %d\n", scan_idx);
                 visualize(proj.origin, scan_idx);
+                scan_idx++;
             }
             auto vis_end= std::chrono::steady_clock::now();
             auto vis_duration = std::chrono::duration_cast<std::chrono::milliseconds>(vis_end - vis_start).count();

@@ -87,7 +87,7 @@ struct Parameters
         // nh.param<bool>("GIE_mapping/profile_loc_rms",profile_loc_rms,false);
         // nh.param<bool>("GIE_mapping/profile_glb_rms",profile_glb_rms,false);
         nh.param<bool>("GIE_mapping/vis_and_save_slice",vis_and_save_slice,false);
-        nh.param<std::string>("GIE_mapping/save_esdf_dir", save_esdf_dir);
+        nh.param<std::string>("GIE_mapping/save_esdf_dir", save_esdf_dir, "/home/GIE_ws/src/GIE-Mapping");
 
         nh.param<int>("GIE_mapping/vis_interval",vis_interval,1);
         nh.param<int>("GIE_mapping/occupancy_threshold",occupancy_threshold,180);
