@@ -1,14 +1,19 @@
-
-
-# GIE-mapping
+# GIE-mapping for nuScenes
 
 GIE Mapping for nuScenes
 
 Firstly, generate nuScenes ROS bag files (follow [nuscenes2bag](https://github.com/ZiliangMiao/nuscenes2bag.git)).
 
-Secondly, modify the parameters in [nusc_dataset.taml](https://github.com/ZiliangMiao/GIE_Mapping_nuScenes/blob/main/cfg/nusc_dataset.yaml).
+Secondly, follow the guidance of the original readme file to compile the project, which is mentioned bellow.
 
-Finally, launch: roslaunch GIE nusc_dataset.launch
+Thirdly, modify the parameters in [nusc_dataset.taml](https://github.com/ZiliangMiao/GIE_Mapping_nuScenes/blob/main/cfg/nusc_dataset.yaml).
+
+Finally, launch: 
+````bash
+roslaunch GIE nusc_dataset.launch
+````
+
+# GIE-mapping
 
 Source code for the paper: **GPU-accelerated Incremental Euclidean Distance Transform for Online Motion Planning of Mobile Robots**
 
