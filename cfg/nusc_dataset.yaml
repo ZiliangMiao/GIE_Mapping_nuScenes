@@ -1,0 +1,43 @@
+for_motion_planner: false
+
+display_loc_edt: false
+display_loc_ogm: false
+display_glb_edt: true
+display_glb_ogm: true
+
+save_loc_edt: false
+save_glb_edt: true
+vis_and_save_slice: true
+
+vis_interval: 1
+vis_height: 1.5  # -1.5 ok, -1.6 NaN; 3.4 ok, 3.5 NaN
+ugv_height: 1
+
+# ros params
+bag_name: "/home/mars/MOS_Projects/nuScenes_MOS_Labeling/mini_data/rosbags/61.bag"  
+cloud_topic: "lidar_top"
+odom_topic: "/odom"
+
+# profile the rms every time the visualization msg is published
+save_esdf_dir: "/home/mars/MOS_Projects/nuScenes_MOS_Labeling/mini_data/esdf"
+log_name: "nusc-61.csv"
+
+occupancy_threshold: 180
+
+voxel_width: 0.1
+
+local_size_x: 40
+local_size_y: 40
+local_size_z: 5.0
+
+ogm:
+  min_height: -10
+  max_height: 10
+
+wave:
+  cutoff_dist: 100
+
+# params of hash table
+hash:
+  bucket_max: 200000
+  block_max: 219970
