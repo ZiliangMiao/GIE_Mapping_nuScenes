@@ -167,6 +167,8 @@ void updateHashOGMWithSensor(LocMap loc_map, HASH_BASE hash_base, const int time
         char old_glb_type = cur_vox->vox_type;
         // update observed occ val
 
+        // question mark [miaozl]
+
         if (new_vox_type == VOXTYPE_OCCUPIED || occ_flag)
         {
             set_hashvoxel_occ_val(cur_vox,250.f, 0.8f, loc_map._occu_thresh, time);

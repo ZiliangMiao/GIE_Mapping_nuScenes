@@ -154,8 +154,8 @@ private:
     PntCld::Ptr _glb_ogm_pnt_cld;
     PntCldI::Ptr _dbg_pnt_cld;
 
-    PntCldI::Ptr _save_loc_edt_pnt_cld;  // question mark [miaozl]
-    PntCldI::Ptr _save_glb_edt_pnt_cld;
+    pcl::PointCloud<pcl::PointXYZI>::Ptr pnt_cld_save;  // pnt cld for store [miaozl]
+    std::vector<std::vector<float>> pnt_cld_xy {{0.0, 0.0}};  // std::vector, only save x and y coord, for indexing
 
     ros::Publisher  _edt_rviz_pub;
     ros::Publisher  _occ_rviz_pub;
@@ -265,16 +265,15 @@ private:
 
     // [org] global vis
     void publish_global_ptcld_2_rviz(int vis_coord_z, int scan_idx)
-    {
-        for (int blk_cnt =0; blk_cnt< _hash_map->VB_cnt_H; blk_cnt++)
-        {
+    {   
+        for (int blk_cnt =0; blk_cnt< _hash_map->VB_cnt_H; blk_cnt++) {
             int3 blk_key = _hash_map->VB_keys_H[blk_cnt];
             if(invalid_blk_key(blk_key))
                 continue;
 
             int3 blk_offset = make_int3(blk_key.x*VB_WIDTH, blk_key.y*VB_WIDTH, blk_key.z*VB_WIDTH);
-            for(int idx_1d =0; idx_1d<VB_SIZE; idx_1d++)
-            {
+
+            for(int idx_1d =0; idx_1d<VB_SIZE; idx_1d++) {
                 GlbVoxel vox = _hash_map->VB_values_H[blk_cnt].voxels[idx_1d];
                 if(vox.vox_type==VOXTYPE_UNKNOWN)
                     continue;
@@ -293,14 +292,11 @@ private:
                     }
                 }
 
-                if(param.display_glb_edt)
-                {
-                    if(param.vis_and_save_slice)
-                    {
+                if(param.display_glb_edt) {
+                    if(param.vis_and_save_slice) {
                         if(vox_crd.z != vis_coord_z)
                             continue;
                     }
-
                     if(invalid_dist_glb(vox.dist_sq))
                         continue;
 
@@ -308,18 +304,52 @@ private:
                     pcl::PointXYZI ptXYZI;
                     ptXYZI.x = gpos.x;
                     ptXYZI.y = gpos.y;
-                    ptXYZI.z = gpos.z;
+                    ptXYZI.z = 0;
                     ptXYZI.intensity = std::sqrt(vox.dist_sq)*param.voxel_width;
                     // std::cout << "Voxel distance: " << ptXYZI.intensity << std::endl;
 
                     _glb_edt_pnt_cld->points.push_back(ptXYZI);
+                    
+                    // accumulate z-axis
+                    // bool found = false;
+                    // for (size_t pnt_idx = 0; pnt_idx < _glb_edt_pnt_cld->points.size(); pnt_idx++) {
+                    //     float x = _glb_edt_pnt_cld->points[pnt_idx].x;
+                    //     float y = _glb_edt_pnt_cld->points[pnt_idx].y;
+                    //     if (x == ptXYZI.x && y == ptXYZI.y) {
+                    //         // If the point was found in the point cloud, accumulate its esdf distance
+                    //         found = true;
+                    //         _glb_edt_pnt_cld->points[pnt_idx].intensity += ptXYZI.intensity;
+                    //         break;
+                    //     }
+                    // }
+                    // if (!found) {
+                    //     // If the point was not found, push back the point
+                    //     _glb_edt_pnt_cld->points.push_back(ptXYZI);
+                    // }
+
+                    // printf("debug flag 1\n");
+                    // std::vector<float> pnt_xy = {gpos.x, gpos.y};
+                    // std::cout << pnt_xy[0] << " " << pnt_xy[1] << std::endl;
+                    // auto it = find(pnt_cld_xy.begin(), pnt_cld_xy.end(), pnt_xy);
+                    // printf("debug flag 2");
+                    // if (it != pnt_cld_xy.end()) {
+                    //     // If the point was found in the point cloud, accumulate its esdf distance
+                    //     int pnt_idx = it - pnt_cld_xy.begin(); 
+                    //     std::cout << "point was found in the point cloud, accumulate esdf distance: " << pnt_idx << " " << ptXYZI.intensity << std::endl; 
+                    //     pnt_cld_save->points[pnt_idx].intensity += ptXYZI.intensity;
+                    // } 
+                    // else { 
+                    //     // If the point was not found, push back the point
+                    //     pnt_cld_save->points.push_back(ptXYZI);
+                    //     pnt_cld_xy.push_back(pnt_xy);
+                    //     std::cout << "point was found in the point cloud, push back" << std::endl;
+                    // }
                 }
             }
         }
 
         // save global edt
-        if (param.save_glb_edt)
-        {
+        if (param.save_glb_edt) {
             std::string global_esdf_file = param.save_esdf_dir + "/global_esdf_" + std::to_string(scan_idx) + ".bin";
             std::ofstream fout(global_esdf_file, std::ios::binary);
             printf("Save global edt point cloud to %s\n", global_esdf_file.c_str());

@@ -12,8 +12,8 @@
 #define XSHIFT 0
 #define YSHIFT 11
 #define ZSHIFT 22
-#define XMASK 0x7ff
-#define YMASK 0x7ff
+#define XMASK 0x7ff // 0x7ff -> 2047
+#define YMASK 0x7ff // 0x899 -> 2201
 #define ZMASK 0x3ff
 
 struct SeenDist
@@ -51,7 +51,9 @@ public:
         _wave_range.x = (((0xffffffff) >> XSHIFT) & XMASK)-1; // even numbers
         _wave_range.y = (((0xffffffff) >> YSHIFT) & YMASK)-1;
         _wave_range.z = (((0xffffffff) >> ZSHIFT) & ZMASK)-1;
-        if (_max_width>= _wave_range.x || _max_width>= _wave_range.y || _max_width>= _wave_range.z)
+        
+        // question mark [miaozl]: _max_width>= _wave_range.z
+        if (_max_width>= _wave_range.x || _max_width>= _wave_range.y)
         {
             printf("max width (local_size x + y + z) %d\n", _max_width);
             printf("wave range: %d, %d, %d\n", _wave_range.x, _wave_range.y, _wave_range.z);

@@ -7,10 +7,10 @@ display_glb_ogm: true
 
 save_loc_edt: false
 save_glb_edt: true
-vis_and_save_slice: true
+vis_and_save_slice: false
 
 vis_interval: 1
-vis_height: 1.5  # -1.5 ok, -1.6 NaN; 3.4 ok, 3.5 NaN
+vis_height: -3.1  # -3.1 ok, 4.8 ok
 ugv_height: 1
 
 # ros params
@@ -19,23 +19,23 @@ cloud_topic: "lidar_top"
 odom_topic: "/odom"
 
 # profile the rms every time the visualization msg is published
-save_esdf_dir: "/home/mars/MOS_Projects/nuScenes_MOS_Labeling/mini_data/esdf/0061"
+save_esdf_dir: "/home/mars/MOS_Projects/nuScenes_MOS_Labeling/mini_data/esdf/0000/2d_accumulate_resolution-0.2"
 log_name: "nusc-61.csv"
 
 occupancy_threshold: 180
 
-voxel_width: 0.1
+voxel_width: 0.2
 
-local_size_x: 40
-local_size_y: 40
-local_size_z: 5.0
+local_size_x: 100
+local_size_y: 100
+local_size_z: 8.0
 
 ogm:
   min_height: -10
   max_height: 10
 
 wave:
-  cutoff_dist: 100
+  cutoff_dist: 2  # 2 meter
 
 # params of hash table
 hash:

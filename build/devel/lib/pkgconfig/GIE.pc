@@ -1,0 +1,8 @@
+prefix=/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel
+
+Name: GIE
+Description: Description of GIE
+Version: 0.0.0
+Cflags: -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/usr/local/cuda-11.7/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs message_runtime roslib

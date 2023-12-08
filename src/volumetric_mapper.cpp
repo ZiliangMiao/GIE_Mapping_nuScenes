@@ -541,21 +541,18 @@ void VOLMAPNODE::CB_pntcld(const sensor_msgs::PointCloud2::ConstPtr& msg)
             float y = pcl_cloud->points[pt_idx].y;
             float z = pcl_cloud->points[pt_idx].z;
             float r = sqrtf(x * x + y * y + z * z);
-            if (r < 0.5)
-            {   // if the point is too close, its angle is not accurate
+            if (r < 0.5) {   
+                // if the point is too close, its angle is not accurate
                 continue;
             }
             float elevation_ang = atan2(z, sqrtf(x * x + y * y));
             // printf("point idx, ring idx and elevation angle: %d %d %f\n", pt_idx, ring_idx, elevation_ang/M_PI*180.0);
-            if (elevation_ang < ring_angle_map[ring_idx])
-            {
+            if (elevation_ang < ring_angle_map[ring_idx]) {
                 ring_angle_map[ring_idx] = elevation_ang;
             }
             // ring 31 max
-            if (ring_idx == 31)
-            {
-                if (elevation_ang > ring_31_max)
-                {
+            if (ring_idx == 31) {
+                if (elevation_ang > ring_31_max) {
                     ring_31_max = elevation_ang;
                 }
             }
@@ -588,10 +585,21 @@ void VOLMAPNODE::CB_pntcld(const sensor_msgs::PointCloud2::ConstPtr& msg)
             // MulScanParam mp(440,             16,        10.0f,  2.0*M_PI/440, -M_PI,      2.0f/180.0f *M_PI, -15.0f/180.0f*M_PI, need rings angle here);  // lidar intrinsics (question mark)
             _vlp_map_maker.initialize(mp_nusc);
         }
-    }else
-    {
-        if(!_pnt_map_maker.is_initialized())
-        {
+
+        // filter the surface points
+        // pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_cloud_without_surface(new pcl::PointCloud<pcl::PointXYZI>);
+        // sensor_msgs::PointCloud2 pntcld_without_surface_msg;
+        // for (int pt_idx = 0; pt_idx < pcl_cloud->points.size(); pt_idx++) {
+        //     float z = pcl_cloud->points[pt_idx].z;
+        //     if (z >= -1.00) {
+        //         pcl_cloud_without_surface->push_back(pcl_cloud->points[pt_idx]);
+        //     }
+        // }
+        // pcl::toROSMsg(*pcl_cloud_without_surface, pntcld_without_surface_msg);
+        // *_pntcld_ptr = pntcld_without_surface_msg;  // without surface test
+    }
+    else {
+        if(!_pnt_map_maker.is_initialized()) {
             _pnt_map_maker.initialize(msg);
         }
     }

@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GIE\\\" -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include/par_wave -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3 -I/usr/include/pcl-1.8 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I/usr/local/cuda-11.7/include -g -std=c++11 -o CMakeFiles/GIE_node.dir/src/main.cpp.o -c /home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/main.cpp",
+  "file": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/main.cpp"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GIE\\\" -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include/par_wave -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3 -I/usr/include/pcl-1.8 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I/usr/local/cuda-11.7/include -g -std=c++11 -o CMakeFiles/GIE_node.dir/src/hokuyo_map_maker.cpp.o -c /home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/hokuyo_map_maker.cpp",
+  "file": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/hokuyo_map_maker.cpp"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GIE\\\" -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include/par_wave -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3 -I/usr/include/pcl-1.8 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I/usr/local/cuda-11.7/include -g -std=c++11 -o CMakeFiles/GIE_node.dir/src/realsense_map_maker.cpp.o -c /home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/realsense_map_maker.cpp",
+  "file": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/realsense_map_maker.cpp"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GIE\\\" -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include/par_wave -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3 -I/usr/include/pcl-1.8 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I/usr/local/cuda-11.7/include -g -std=c++11 -o CMakeFiles/GIE_node.dir/src/pntcld_map_maker.cpp.o -c /home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/pntcld_map_maker.cpp",
+  "file": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/pntcld_map_maker.cpp"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GIE\\\" -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include/par_wave -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3 -I/usr/include/pcl-1.8 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I/usr/local/cuda-11.7/include -g -std=c++11 -o CMakeFiles/GIE_node.dir/src/volumetric_mapper.cpp.o -c /home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/volumetric_mapper.cpp",
+  "file": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/volumetric_mapper.cpp"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"GIE\\\" -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build/devel/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include -I/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/include/par_wave -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3 -I/usr/include/pcl-1.8 -I/usr/include/ni -I/usr/include/openni2 -I/usr/include/vtk-6.3 -I/usr/include/freetype2 -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/include/python2.7 -I/usr/include/hdf5/openmpi -I/usr/include/libxml2 -I/usr/include/jsoncpp -I/usr/include/tcl -I/usr/local/cuda-11.7/include -g -std=c++11 -o CMakeFiles/GIE_node.dir/src/vlp16_map_maker.cpp.o -c /home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/vlp16_map_maker.cpp",
+  "file": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/src/vlp16_map_maker.cpp"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/CMakeFiles/gmock.dir/usr/src/googletest/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/CMakeFiles/gmock_main.dir/usr/src/googletest/googletest/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock-all.cc.o -c /usr/src/googletest/googlemock/src/gmock-all.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -I/usr/src/googletest/googlemock/include -I/usr/src/googletest/googlemock -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /usr/src/googletest/googlemock/src/gmock_main.cc",
+  "file": "/usr/src/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /usr/src/googletest/googletest/src/gtest-all.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/mars/MOS_Projects/GIE_ws/src/GIE-mapping/build",
+  "command": "/usr/bin/g++ -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgtest_main_EXPORTS -I/usr/src/googletest/googletest/include -I/usr/src/googletest/googletest -g -fPIC  -Wall -Wshadow -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /usr/src/googletest/googletest/src/gtest_main.cc",
+  "file": "/usr/src/googletest/googletest/src/gtest_main.cc"
+}
+]
