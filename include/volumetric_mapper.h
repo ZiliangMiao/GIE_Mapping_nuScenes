@@ -182,10 +182,8 @@ private:
     pcl::MomentOfInertiaEstimation<pcl::PointXYZ> feature_extractor;
 
     // org local vis
-    void publish_local_ptcld_2_rviz(int scan_idx)
-    {
-        if(!param.for_motion_planner)
-        {
+    void publish_local_ptcld_2_rviz(int scan_idx) {
+        if(!param.for_motion_planner) {
             _loc_map->copy_ogm_2_host();
             _loc_map->copy_edt_2_host();
         }
@@ -264,8 +262,7 @@ private:
     }
 
     // [org] global vis
-    void publish_global_ptcld_2_rviz(int vis_coord_z, int scan_idx)
-    {   
+    void publish_global_ptcld_2_rviz(int vis_coord_z, int scan_idx) {   
         for (int blk_cnt =0; blk_cnt< _hash_map->VB_cnt_H; blk_cnt++) {
             int3 blk_key = _hash_map->VB_keys_H[blk_cnt];
             if(invalid_blk_key(blk_key))
@@ -278,12 +275,9 @@ private:
                 if(vox.vox_type==VOXTYPE_UNKNOWN)
                     continue;
                 int3 vox_crd = reconstruct_vox_crd(blk_offset,idx_1d);
-                if(param.display_glb_ogm)
-                {
-                    if(vox.vox_type==VOXTYPE_OCCUPIED)
-                    {   
+                if(param.display_glb_ogm) {
+                    if(vox.vox_type==VOXTYPE_OCCUPIED) {   
                         float3 gpos = _loc_map->coord2pos(vox_crd);
-                        // std::cout << "Voxel occupied: " << gpos.x << " " << gpos.y << " " << gpos.z << std::endl;
                         pcl::PointXYZ OccuPtXYZ;
                         OccuPtXYZ.x = gpos.x;
                         OccuPtXYZ.y = gpos.y;
@@ -348,13 +342,23 @@ private:
             }
         }
 
-        // save global edt
+        // save
+        if (param.save_glb_ogm) {
+            std::string global_ogm_file = param.save_ogm_dir + "/global_ogm_" + std::to_string(scan_idx) + ".bin";
+            std::ofstream fout(global_ogm_file, std::ios::binary);
+            printf("Save global ogm point cloud to %s\n", global_ogm_file.c_str());
+            for (int i = 0; i < _glb_ogm_pnt_cld->points.size(); i++) {
+                fout.write((char *) &_glb_ogm_pnt_cld->points[i].x, sizeof(float));
+                fout.write((char *) &_glb_ogm_pnt_cld->points[i].y, sizeof(float));
+                fout.write((char *) &_glb_ogm_pnt_cld->points[i].z, sizeof(float));
+            }
+            fout.close();
+        }
         if (param.save_glb_edt) {
             std::string global_esdf_file = param.save_esdf_dir + "/global_esdf_" + std::to_string(scan_idx) + ".bin";
             std::ofstream fout(global_esdf_file, std::ios::binary);
             printf("Save global edt point cloud to %s\n", global_esdf_file.c_str());
-            for (int i = 0; i < _glb_edt_pnt_cld->points.size(); i++)
-            {
+            for (int i = 0; i < _glb_edt_pnt_cld->points.size(); i++) {
                 fout.write((char *) &_glb_edt_pnt_cld->points[i].x, sizeof(float));
                 fout.write((char *) &_glb_edt_pnt_cld->points[i].y, sizeof(float));
                 fout.write((char *) &_glb_edt_pnt_cld->points[i].z, sizeof(float));
@@ -362,17 +366,14 @@ private:
             }
             fout.close();
         }
-
         // display
-        if(param.display_glb_ogm)
-        {
+        if(param.display_glb_ogm) {
             std::cout << "Global OGM Cloud Size: " << _glb_ogm_pnt_cld->size() << std::endl;
             pcl_conversions::toPCL(ros::Time::now(), _glb_ogm_pnt_cld->header.stamp);
             _glb_ogm_rviz_pub.publish(_glb_ogm_pnt_cld);
             _glb_ogm_pnt_cld->clear();
         }
-        if(param.display_glb_edt)
-        {
+        if(param.display_glb_edt) {
             std::cout << "Global EDT Cloud Size: " << _glb_edt_pnt_cld->size() << std::endl;
             pcl_conversions::toPCL(ros::Time::now(), _glb_edt_pnt_cld->header.stamp);
             _glb_edt_rviz_pub.publish(_glb_edt_pnt_cld);

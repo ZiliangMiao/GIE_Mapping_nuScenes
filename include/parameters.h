@@ -20,12 +20,17 @@ struct Parameters
     // save options
     bool save_loc_edt;
     bool save_glb_edt;
+    bool save_glb_ogm;
+    
+    // use which map maker
+    bool use_pnt_maker;
 
     // profile
     // bool profile_loc_rms;
     // bool profile_glb_rms;
     bool vis_and_save_slice;
     std::string save_esdf_dir;
+    std::string save_ogm_dir;
 
     // for profiling
     std::string  log_name = "GIE_log.csv";
@@ -82,12 +87,13 @@ struct Parameters
         nh.param<bool>("GIE_mapping/display_glb_ogm", display_glb_ogm, true);
         nh.param<bool>("GIE_mapping/display_loc_edt", display_loc_edt, false);
         nh.param<bool>("GIE_mapping/display_loc_ogm", display_loc_ogm, false);
-        nh.param<bool>("GIE_mapping/save_loc_edt", save_loc_edt, true);
+        nh.param<bool>("GIE_mapping/save_loc_edt", save_loc_edt, false);
         nh.param<bool>("GIE_mapping/save_glb_edt", save_glb_edt, true);
-        // nh.param<bool>("GIE_mapping/profile_loc_rms",profile_loc_rms,false);
-        // nh.param<bool>("GIE_mapping/profile_glb_rms",profile_glb_rms,false);
+        nh.param<bool>("GIE_mapping/save_glb_ogm", save_glb_ogm, false);
+        nh.param<bool>("GIE_mapping/use_pnt_maker", use_pnt_maker, true);
         nh.param<bool>("GIE_mapping/vis_and_save_slice",vis_and_save_slice,false);
         nh.param<std::string>("GIE_mapping/save_esdf_dir", save_esdf_dir, "/home/GIE_ws/src/GIE-Mapping");
+        nh.param<std::string>("GIE_mapping/save_ogm_dir", save_ogm_dir, "/home/GIE_ws/src/GIE-Mapping");
 
         nh.param<int>("GIE_mapping/vis_interval",vis_interval,1);
         nh.param<int>("GIE_mapping/occupancy_threshold",occupancy_threshold,180);
@@ -119,19 +125,18 @@ struct Parameters
         log_dir = ros::package::getPath("GIE")+"/" + log_name;
         std::cout << "logging path: " <<log_dir <<std::endl;
         // dataset
-        nh.getParam("/data_case", data_case);
+        nh.param<std::string>("GIE_mapping/data_case", data_case, "laser3D");
         std::cout<<"data_case is "<<data_case<<std::endl;
         std::cout<<"voxel_width is "<<voxel_width<<std::endl;
-        if (data_case == "cow_lady")
-        {
+        if (data_case == "cow_lady") {
             T_V_C << 0.971048, -0.120915, 0.206023, 0.00114049,
                     0.15701, 0.973037, -0.168959, 0.0450936,
                     -0.180038, 0.196415, 0.96385, 0.0430765,
                     0.0, 0.0, 0.0, 1.0;
         }
-        else if (data_case == "nusc")
-        {
-            T_L_V << 0.002033, 0.999704, 0.024241, 0.943713,
+        if (data_case == "nusc") {
+        // for nusc dataset
+        T_L_V << 0.002033, 0.999704, 0.024241, 0.943713,
                     -0.999980, 0.002175, -0.005848, 0.00,
                     -0.005899, -0.024229, 0.999689, 1.84023,
                     0.0, 0.0, 0.0, 1.0;

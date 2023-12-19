@@ -263,13 +263,22 @@ VOLMAPNODE::VOLMAPNODE()
             _loc_map->calculate_update_pivot(proj.origin);
 
             if (_msg_mgr.got_pnt_cld) {
-                std::cout << "----- Update Local OGM -----" << std::endl;
-                if ((param.data_case == "laser3D") || (param.data_case == "nusc")) {
+                if (param.data_case == "laser3D") {
+                std::cout << "----- Update Local OGM with VLP Maker -----" << std::endl;
                 _vlp_map_maker.updateLocalOGM(proj, _pntcld_ptr, thrust::raw_pointer_cast(_hash_map->VB_keys_loc_D.data()), _time,
                                             param.for_motion_planner, param.robot_r2_grids);
-                } else {
-                    _pnt_map_maker.updateLocalOGM(proj, _pntcld_ptr, thrust::raw_pointer_cast(_hash_map->VB_keys_loc_D.data()), _time,
+                } 
+                else if (param.data_case == "nusc") {
+                    if (param.use_pnt_maker)  {
+                        std::cout << "----- Update Local OGM with Pnt Map Maker -----" << std::endl;
+                        _pnt_map_maker.updateLocalOGM(proj, _pntcld_ptr, thrust::raw_pointer_cast(_hash_map->VB_keys_loc_D.data()), _time,
                                                 param.for_motion_planner, param.robot_r2_grids);
+                    }
+                    else {
+                        std::cout << "----- Update Local OGM with VLP Maker -----" << std::endl;
+                        _vlp_map_maker.updateLocalOGM(proj, _pntcld_ptr, thrust::raw_pointer_cast(_hash_map->VB_keys_loc_D.data()), _time,
+                                            param.for_motion_planner, param.robot_r2_grids);
+                    }
                 }
             }
             
@@ -434,7 +443,7 @@ tf::Transform VOLMAPNODE::odom2trans()  {
         tf::Transform transCorrect;
         tf::transformEigenToTF(transEigen, transCorrect);
         return  transCorrect;
-    }else if (param.data_case == "nusc")
+    } else if (param.data_case == "nusc")
     {
         // transform correction
         Eigen::Affine3d transEigen;
@@ -518,8 +527,7 @@ void VOLMAPNODE::CB_scan2D(const sensor_msgs::LaserScan::ConstPtr& msg)
 //---
 void VOLMAPNODE::CB_pntcld(const sensor_msgs::PointCloud2::ConstPtr& msg)
 {
-    if((param.data_case == "laser3D") || (param.data_case == "nusc"))
-    {   
+    if(param.data_case == "laser3D") {   
         // convert ros PointCloud2 message to PCL Point Cloud
         pcl::PointCloud<pcl::PointXYZI>::Ptr pcl_cloud(new pcl::PointCloud<pcl::PointXYZI>);
         pcl::fromROSMsg(*msg, *pcl_cloud);
@@ -528,14 +536,13 @@ void VOLMAPNODE::CB_pntcld(const sensor_msgs::PointCloud2::ConstPtr& msg)
         float azimuth_inc = 2.0*M_PI / num_ring_pts;
 
         std::map<int, float> ring_angle_map;
-        for (int ring_idx = 0; ring_idx < num_rings; ring_idx++)
-        {   // ring_angle_map initialize
+        for (int ring_idx = 0; ring_idx < num_rings; ring_idx++) {   
+            // ring_angle_map initialize
             ring_angle_map[ring_idx] = M_PI;
         }
         float ring_31_max = -M_PI;
 
-        for (int pt_idx = 0; pt_idx < pcl_cloud->points.size(); pt_idx++)
-        {
+        for (int pt_idx = 0; pt_idx < pcl_cloud->points.size(); pt_idx++) {
             int ring_idx = pt_idx % num_rings;
             float x = pcl_cloud->points[pt_idx].x;
             float y = pcl_cloud->points[pt_idx].y;
@@ -570,8 +577,8 @@ void VOLMAPNODE::CB_pntcld(const sensor_msgs::PointCloud2::ConstPtr& msg)
         // params check
         // std::cout << "VLP Map Maker Init Point Cloud Size: " << pcl_cloud->points.size() << std::endl;
         float elevation_inc = fabs((ring_angle_map[0] - ring_angle_map[31]) / 31);  // not accurate at all
-        if(!_vlp_map_maker.is_initialized())
-        {
+        if(!_vlp_map_maker.is_initialized()) {
+            std::cout << "----- Initialize VLP Map Maker -----" << std::endl;
             //              scan_num_,         ring_num_, max_r_, theta_inc_,   theta_min_, 
             MulScanParam mp_nusc(num_ring_pts, num_rings, 70.0f,  azimuth_inc,  -M_PI,
                                  ring_angle_map[0], ring_angle_map[1], ring_angle_map[2], ring_angle_map[3],
@@ -598,8 +605,9 @@ void VOLMAPNODE::CB_pntcld(const sensor_msgs::PointCloud2::ConstPtr& msg)
         // pcl::toROSMsg(*pcl_cloud_without_surface, pntcld_without_surface_msg);
         // *_pntcld_ptr = pntcld_without_surface_msg;  // without surface test
     }
-    else {
+    else if (param.data_case == "nusc") {
         if(!_pnt_map_maker.is_initialized()) {
+            std::cout << "----- Initialize PointCloud Map Maker -----" << std::endl;
             _pnt_map_maker.initialize(msg);
         }
     }
